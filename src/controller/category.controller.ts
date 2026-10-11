@@ -11,8 +11,8 @@ export const getCategories = async (
     });
 
     reply.send(category);
-  } catch (error) {
-    request.log.error(`Error locating the category. ${error}`);
+  } catch (err) {
+    request.log.error(`Error locating the category: ${err}`);
     reply.status(500).send({ error: "Error locating the category" });
   }
 };
