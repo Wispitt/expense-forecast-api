@@ -3,17 +3,15 @@ import { env } from "./config/env.js";
 import { prismaConnect } from "./config/prisma.js";
 import { initializeGlobalCategories } from "./services/globalCategories.services.js";
 
-const PORT = env.PORT;
-
 const startServer = async () => {
   try {
     await prismaConnect();
     await initializeGlobalCategories();
-    await app.listen({ port: PORT }).then(() => {
-      console.log(`Server running in ${PORT}`);
-    });
+    await app.listen({ port: env.PORT });
+    console.log(`Server listening at ${env.PORT}`);
   } catch (err) {
-    console.log(err);
+    console.error("Failed to start server:", err);
+    process.exit(1);
   }
 };
 

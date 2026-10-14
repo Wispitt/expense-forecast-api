@@ -43,6 +43,7 @@ export const initializeGlobalCategories = async (): Promise<Category[]> => {
       }
     } catch (err) {
       console.error(`System error, try again: ${err}`);
+      process.exit(1);
     }
   }
 

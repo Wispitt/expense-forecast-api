@@ -8,6 +8,7 @@ export const prismaConnect = async () => {
     console.log("The db is connected");
   } catch (err) {
     console.error(`Failed to connect to the database: ${err}`);
+    process.exit(1);
   }
 };
 
