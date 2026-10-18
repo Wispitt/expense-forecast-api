@@ -16,4 +16,4 @@ export type TransactionSummary = {
   totalIncomes: number;
   balance: number;
   expensesByCategory: CategorySummary[];
-}
+};
