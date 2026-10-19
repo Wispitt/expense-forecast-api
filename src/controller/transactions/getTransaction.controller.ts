@@ -11,7 +11,7 @@ export const getTransaction = async (
   request: FastifyRequest<{ Querystring: GetTransactionQuery }>,
   reply: FastifyReply,
 ): Promise<void> => {
-  const userId = "IYGT$T¨GG*_@T";
+  const userId = request.userId;
 
   if (!userId) {
     return reply.status(401).send({ error: "Error authorizing the user" });

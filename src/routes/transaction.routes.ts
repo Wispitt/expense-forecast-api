@@ -10,8 +10,12 @@ import {
   getTransactionSchema,
   getTransactionSummarySchema,
 } from "../schemas/transaction.schema";
+import { authMiddleware } from "../middlewares/auth.middlewares";
 
 const transactionsRoutes = async (fastify: FastifyInstance): Promise<void> => {
+
+  fastify.addHook('preHandler', authMiddleware);
+
   fastify.route({
     method: "POST",
     url: "/",
