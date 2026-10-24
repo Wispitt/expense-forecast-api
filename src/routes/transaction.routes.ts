@@ -7,10 +7,12 @@ import { getTransactionsSummary } from "../controller/transactions/getTransactio
 import {
   createTransactionSchema,
   deleteTransactionSchema,
+  getTransactionHistoricalSchema,
   getTransactionSchema,
   getTransactionSummarySchema,
 } from "../schemas/transaction.schema";
 import { authMiddleware } from "../middlewares/auth.middlewares";
+import { getTransactionsHistorical } from "../controller/transactions/getHistoricalTransactions.controller";
 
 const transactionsRoutes = async (fastify: FastifyInstance): Promise<void> => {
 
@@ -41,6 +43,15 @@ const transactionsRoutes = async (fastify: FastifyInstance): Promise<void> => {
       querystring: zodToJsonSchema(getTransactionSummarySchema),
     },
     handler: getTransactionsSummary,
+  });
+
+  fastify.route({
+    method: "GET",
+    url: "/historical",
+    schema: {
+      querystring: zodToJsonSchema(getTransactionHistoricalSchema),
+    },
+    handler: getTransactionsHistorical,
   });
 
   fastify.route({
