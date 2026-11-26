@@ -8,13 +8,13 @@ export const createTransactionSchema = z.object({
   description: z.string().min(1, "Description is mandatory"),
   amount: z.number().positive("The value must be positive"),
   date: z.coerce.date({
-    error: () => ({ message: "Date ivalid" }),
+    message: "Date ivalid",
   }),
   categoryId: z.string().refine(isValidObjecy, {
-    error: () => ({ message: "Category ivalid" }),
+    message: "Category ivalid",
   }),
   type: z.enum([TransactionType.expense, TransactionType.income], {
-    error: () => ({ message: "Type ivalid" }),
+    message: "Type ivalid",
   }),
 });
 
@@ -23,13 +23,13 @@ export const getTransactionSchema = z.object({
   year: z.string().optional(),
   type: z
     .enum([TransactionType.expense, TransactionType.income], {
-      error: () => ({ message: "Type ivalid" }),
+      message: "Type ivalid",
     })
     .optional(),
   categoryId: z
     .string()
     .refine(isValidObjecy, {
-      error: () => ({ message: "Category ivalid" }),
+      message: "Category ivalid",
     })
     .optional(),
 });

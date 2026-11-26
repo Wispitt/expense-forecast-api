@@ -38,9 +38,16 @@ export const createTransactions = async (
 
     const newTransaction = await prisma.transaction.create({
       data: {
-        ...transaction,
-        userId,
+        description: transaction.description,
+        amount: transaction.amount,
+        type: transaction.type,
         date: parseDate,
+        userId,
+        category: {
+          connect: {
+            id: category.id,
+          },
+        },
       },
       include: {
         category: true,
