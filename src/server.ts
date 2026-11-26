@@ -1,6 +1,6 @@
 import app from "./app.js";
 import { env } from "./config/env.js";
-import initializeFirebaseAdmin from "./config/firebase.js";
+import { initializeFirebaseAdmin } from "./config/firebase.js";
 import { prismaConnect } from "./config/prisma.js";
 import { initializeGlobalCategories } from "./services/globalCategories.services.js";
 
