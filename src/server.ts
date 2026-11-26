@@ -10,7 +10,7 @@ const startServer = async () => {
   try {
     await prismaConnect();
     await initializeGlobalCategories();
-    await app.listen({ port: env.PORT });
+    await app.listen({ port: env.PORT, host: '0.0.0.0' });
     console.log(`Server listening at ${env.PORT}`);
   } catch (err) {
     console.error("Failed to start server:", err);
